@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang = "ko">
+    <head>
+        <meta charset = "utf-8">
+        <title>sign up page</title>
+        <link rel = "stylesheet" type = "text/css" href = "main.css">
+    </head>
+    <body>
+        <div id = "first">
+            <h1>환영합니다! 여기는 회원가입 페이지입니다.</h1>
+            <p>
+                <a href = "login.html">로그인 |</a>
+                <span> 회원가입</span>
+            </p>
+        </div>
+        <div>
+            <p>개인정보 (필수)</p>
+            <form name = "fo" method = "post" action = "login.html">
+                <p>
+                    <label>이름 : <input name = "name" id = "name" type = "text" size = "25" placeholder = "이름을 여기에 입력" autofocus required /></label>
+                </p>
+                <p>
+                    <label>생년월일 : <input name = "birthday" id = "birthday" type = "date" required /></label>
+                </p>
+                <p>
+                    <label>학년 : <input name = "grade" type = "number" min = "1" max = "4" step = "1" /></label>
+                </p>
+                <p>
+                    <label>전화번호 : <input name = "phonenum" id = "phonenum" type = "tel" placeholder = "XXX-XXXX-XXXX" pattern = "\d{3}-\d{4}-\d{4}" required /></label>
+                </p>
+                <p>
+                    <label>이메일 주소 : <input name = "mail" id = "mail" type = "email" placeholder = "name@domain.com" pattern = "[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" required /></label>
+                </p>
+                <p>
+                    <label>사용자 아이디 : <input name = "id" id = "id" type = "text" size = "15" placeholder = "아이디를 여기에 입력" required /></label>
+                </p>
+                <p>
+                    <label>비밀번호 : <input name = "password1" id = "password1" type = "password" size = "25" placeholder="비밀번호를 여기에 입력" required /></label>
+                </p>
+                <p>
+                    <label>비밀번호 확인 : <input name = "password2" id = "password2" type = "password" size = "25" placeholder = "비밀번호 확인" required /></label>
+                </p>
+                <p>
+                    <input id = "submitting" type = "submit" value = "회원가입" onclick = "test()" />
+                    <input id = "canceling" type = "reset" value = "취소" />
+                </p>
+            </form>
+            <script>
+                function test() {
+                    var pw1 = document.getElementById('password1').value;
+                    var pw2 = document.getElementById('password2').value;
+                    
+                    if(pw1 != pw2) {
+                        alert("비밀번호가 일치하지 않습니다!");
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+    </body>
+</html>
