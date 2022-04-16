@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "ko">
+    <head>
+        <meta charset = "utf-8">
+        <title>log in page</title>
+        <link rel = "stylesheet" type = "text/css" href = "main.css">
+    </head>
+    <body>
+        <div id = "first">
+            <h1>환영합니다! 여기는 로그인 페이지입니다.</h1>
+            <p>
+                <span>로그인</span>
+            </p>
+        </div>
+        <div id = "informa">
+            <p>회원정보 (필수)</p>
+            <form name = "fo2" method = "post" action = "login.html">
+                <p>
+                    <label>사용자 아이디 : <input name = "id" id = "id" type = "text" size = "15" placeholder = "아이디를 여기에 입력" autofocus required /></label>
+                </p>
+                <p>
+                    <label>비밀번호 : <input name = "password1" id = "password1" type = "password" size = "25" placeholder="비밀번호를 여기에 입력" required /></label>
+                </p>
+                <p>
+                    <label>비밀번호 확인 : <input name = "password2" id = "password2" type = "password" size = "25" placeholder = "비밀번호 확인" required /></label>
+                </p>
+                <p>
+                    <input id = "login" type = "submit" value = "로그인" />
+                    <input id = "gosignup" type = "button" value = "회원가입" onclick = "shift()" />
+                </p>
+            </form>
+            <script>
+                function shift() {
+                    location.href = "signup.html";
+                }
+            </script>
+        </div>
+    </body>
+</html>
