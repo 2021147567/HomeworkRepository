@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang = "ko">
+    <head>
+        <meta charset = "utf-8">
+        <title>main page</title>
+        <link rel = "stylesheet" type = "text/css" href = "main.css">
+    </head>
+    <body id = "indexBody">
+        <div id = "mainFirst">
+            <h1 id = "mainH1">어서오세요! 여기는 악기 구매 사이트입니다.</h1>
+        </div>
+        <div id = "mainNav">
+            <div id = "navigate">
+                <div><span>메인페이지</span></div>
+                <div><a href = "login.html">로그인</a></div>
+                <div><a href = "signup.html">회원가입</a></div>
+            </div>
+        </div>
+        <div id = "mainCon">
+            <div class = "mainSec">
+                <div class = "text">
+                    <h2 class = "title">아래는 <span class = "emphasize">저희 상품들</span>입니다.</h2>
+                </div>
+                <div class = "list">
+                    <aside>
+                        <form>
+                            <div>
+                                <label for = "category">카테고리를 선택하세요</label>
+                                <select id = "category">
+                                    <option value = "All" selected>All</option>
+                                    <option value = "guitar">guitar</option>
+                                    <option value = "keyboard">keyboard</option>
+                                    <option value = "drum">drum</option>
+                                    <option value = "elecguitar">elecguitar</option>
+                                    <option value = "bass">bass</option>
+                                    <option value = "etc">etc</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for = "search">찾을 악기를 입력하세요</label>
+                                <input type = "text" id = "search" placeholder = "e.g. 포크기타 핑크">
+                            </div>
+                            <div>
+                                <button>필터링</button>
+                            </div>
+                        </form>
+                    </aside>
+                    <main id = "mainContent">
+                        <div class = "guitar">
+                            <p id = "1"></p>
+                            <img class = "1" src = "https://m.media-amazon.com/images/I/81tQhEEtiEL._AC_SX679_.jpg" alt = "뮤직 엘리 MA34-N 클래식 주니어 기타">
+                            <p>click to see more</p>
+                        </div>
+                        <div class = "keyboard">
+                            <p id = "2"></p>
+                            <img class = "1" src = "https://m.media-amazon.com/images/I/81a+qouQNmL._AC_SX425_.jpg" alt = "알레시스 멜로디 키보드 피아노">
+                            <p>click to see more</p>
+                        </div>
+                        <div class = "drum">
+                            <p id = "3"></p>
+                            <img class = "1" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI6zLQhfdqILEKHrCejz9Ai8HUoagfFF4w8g&usqp=CAU" alt = "전자 드럼">
+                            <p>click to see more</p>
+                        </div>
+                        <div class = "bass">
+                            <p id = "4"></p>
+                            <img class = "1" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTvXLpuNTbJ_PWjsWdoT8Wg0s41N6rUYBvtQ&usqp=CAU" alt = "Sawtooth EP 시리즈 베이스 그린">
+                            <p>click to see more</p>
+                        </div>
+                        <div class = "elecguitar">
+                            <p id = "5"></p>
+                            <img class = "1" src = "https://www.stars-music.com/medias/eastone/str-mini-sss-trem-mn-600-165773.jpg" alt = "EASTONE-STR Mini">
+                            <p>click to see more</p>
+                        </div>
+                        <div class = "etc">
+                            <p id = "1"></p>
+                            <img class = "1" src = "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/179656/4704847_800.jpg" alt = "Otto Jos. Klier 55 오케스트라 바이올린 4/4">
+                            <p>click to see more</p>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <script>
+            let count = 1;
+            fetch('https://2021147567.github.io/HomeworkRepository/LAB5/product.json')
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                initialize(data);
+            })
+            function initialize(data) {
+                window.onscroll = () => {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                        setTimeout(load(), 1000);
+                    }
+                };
+                function load() {
+                    count = count + 1;
+                    data.forEach(adding);
+                };
+                function adding(datum) {
+                    if (datum.page === count) {
+                        document.querySelector('#mainContent').innerHTML += `<p id = "${datum.id}"></p><div class = "${datum.type}"><img class = "${datum.page}" src = "${datum.image}" alt = "${datum.name}" /><p>click to see more</p></div>`;
+                    };
+                };
+                function adding1(datum) {
+                    if (datum.page === 1) {
+                        document.querySelector('#mainContent').innerHTML += `<p id = "${datum.id}"></p><div class = "${datum.type}"><img class = "${datum.page}" src = "${datum.image}" alt = "${datum.name}" /><p>click to see more</p></div>`;
+                    };
+                };
+                function resetPage() {
+                    clearPage();
+                    data.forEach(adding1);
+                    count = 1;
+                };
+                function clearPage() {
+                    $('#mainContent div').remove()
+                }
+                var target = document.querySelector('#category');
+                var category = target.options[target.selectedIndex].value;
+                var search = document.querySelector('#search');
+                var searchBtn = document.querySelector('button');
+                searchBtn.addEventListener('click', searching);
+                function searching() {
+                    if (category === target.options[target.selectedIndex].value && search.value === document.querySelector('#search').value) {
+                        return;
+                    }
+                    else {
+                        category = target.options[target.selectedIndex].value;
+                        search = document.querySelector('#search');
+                        if (category === 'All' && search.value === '') {
+                            resetPage();
+                        }
+                        else {
+                            selectProduct(category, search.value);
+                        }
+                    }
+                };
+                function selectProduct(categoryVal, searchVal) {
+                    if (searchVal === '') {
+                        clearPage();
+                        data.forEach(categorize);
+                    }
+                    else {
+                        clearPage();
+                        data.forEach(categorize2);
+                    }
+                };
+                function categorize(datum) {
+                    if (datum.type === category) {
+                        document.querySelector('#mainContent').innerHTML += `<p id = "${datum.id}"></p><div class = "${datum.type}"><img class = "${datum.page}" src = "${datum.image}" alt = "${datum.name}" /><p>click to see more</p></div>`;
+                    }
+                };
+                function categorize2(datum) {
+                    if (datum.type === category && datum.name.includes(search.value)) {
+                        document.querySelector('#mainContent').innerHTML += `<p id = "${datum.id}"></p><div id = class = "${datum.type}"><img class = "${datum.page}" src = "${datum.image}" alt = "${datum.name}" /><p>click to see more</p></div>`;
+                    }
+                };
+                var images = document.querySelectorAll('img');
+                images.forEach(info);
+                function info(item) {
+                    document.getElementById(item.id).innerHTML += `제품명: ${item.name} 가격: ${item.price}`;
+                }
+            }
+        </script>
+    </body>
+</html>

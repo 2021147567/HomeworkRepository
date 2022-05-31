@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gamja+Flower&family=Jua&display=swap');
+h1 {
+    font-size: 30pt; font-family: 'Jua', sans-serif;
+}
+img {
+    height: 70%;
+    width: 70%;
+}
+span {
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+    color: black;
+}
+a {
+    text-decoration: none; color: black;
+}
+#informa {
+    width: 70%; height: 70%;
+    text-align: left;
+    border: thick solid;
+    margin: 1em;
+    padding: .5em;
+}
+#first {
+    width: 70%; height: 70%;
+    text-align: left;
+    margin: 1em;
+    padding: .5em;
+    border: solid;
+    border-color: gray;
+    text-align: center;
+}
+#mainFirst {
+    width: 980px;
+    padding: 0.5em;
+    margin: auto;
+    margin-bottom: 1em;
+}
+#mainH1 {
+    font-size: 50px;
+    position: relative;
+    animation-name: h1moving;
+    animation-timing-function: linear;
+    animation-duration: 2s;
+}
+@keyframes h1moving {
+    0% {left: 980px;}
+    50% {left: 490px;}
+    100% {left: 0px;}
+}
+#mainNav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    border-bottom: 3px solid black;
+    margin: 10px;
+    padding: 10px;
+}
+#navigate {
+    display: flex;
+    flex-basis: 980px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+#navigate > div {
+    text-align: center;
+    flex-basis: auto; 
+    margin: 5px;
+    padding: 0px;
+    border: 0px;
+}
+#navigate > div > span {
+    color: blue;
+}
+#mainCon {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.mainSec {
+    flex-basis: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+.text {
+    flex-basis: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+.divide {
+    flex-basis: 450px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.divide:not(:last-child) {
+    margin:0 5px 0 0;
+}
+.title {
+    flex-basis: 980px;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 25pt;
+    text-align: left;
+    border-bottom: 3px solid black;
+}
+.list {
+    display: flex;
+    border: 3px solid black;
+}
+.items {
+    border: thick solid;
+    margin: .5em;
+    padding: .5em;
+    flex-basis: 220px;
+    height: auto;
+    text-align: left;
+}
+.emphasize {
+    font-size: 28pt;
+    -webkit-text-stroke: 1px darkmagenta;
+    border: 0px;
+    color: darkorchid;
+}
+.item1 {
+    position: relative;
+    transition: transform 2s, width 2s, height 2s;
+}
+.item1:hover {
+    transform: rotate(360deg);
+    width: 100%; height: 100%;
+}
+.item2 {
+    position: relative;
+    transition: width 2s, height 2s;
+}
+.item2:hover {
+    width: 100%; height: 100%;
+}
+.contents {
+    flex-basis: 980px;
+    height: auto;
+    text-align: left;
+    column-count: 2; column-gap: 30px; column-rule: 1px outset black;
+}
+.contents > p {
+    font-family: 'Dongle', sans-serif;
+    font-size: 22pt;
+}
+@media (max-width: 800px) {
+    #navigate {
+        flex-direction: column;
+    }
+    #mainH1 {
+        font-size: 25px;
+    }
+    .contents {
+        column-count: 1;
+    }
+    .divide {
+        display: flex;
+        flex-basis: 800px;
+    }
+    .list {
+        display: grid;
+        max-width: 800px;
+    }
+    .items {
+        flex-basis: 300px;
+    }
+    aside div {
+        display: grid;
+        max-width: 800px;
+    }
+    #indexBody {
+        display: grid;
+        max-width: 800px;
+    }
+    aside {
+        grid-row: 1;
+        border-right: none;
+        border-bottom: 3px solid black;
+    }
+    aside input {
+        width: calc(100% - 5px);
+        padding: 5px 0 5px 5px;
+    }
+    .list main {
+        grid-row: 2;
+    }
+}
+@media (max-width: 480px) {
+    #mainH1 {
+        font-size: 20px;
+    }
+    .items {
+        flex-basis: 180px;
+    }
+    .divide {
+        flex-direction: column;
+    }
+}
+#submitting {
+    background-color: greenyellow;
+}
+#canceling {
+    background-color: brown;
+}
+#login {
+    background-color: yellowgreen;
+}
+#gosignup {
+    background-color: aqua;
+}
+aside {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    flex: 3;
+    padding: 20px;
+    border-right: 3px solid black;
+}
+aside form {
+    display: block;
+    margin-top: 0em;
+}
+aside form div {
+    height: 50px;
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-family: 'Jua', sans-serif;
+}
+select {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-family: 'Jua', sans-serif;
+}
+select:not(:-internal-list-box) {
+    overflow: visible !important;
+}
+#indexBody {
+    display: block;
+    margin: 8px;
+    width: 980px;
+    margin: 0 auto;
+}
+aside input {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-family: 'Jua', sans-serif;
+    padding: 5px;
+    width: 201.5px;
+}
+button {
+    font-size: 1rem;
+    font-family: 'Jua', sans-serif;
+    width: 100%;
+    padding: 5px 0;
+}
+.list main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex: 7;
+    padding: 20px;
+}
+main div {
+    width: 45%;
+    margin: 5px;
+    position: relative;
+    height: 215px;
+    border: 1px;
+}
